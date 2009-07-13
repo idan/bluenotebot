@@ -14,12 +14,10 @@
             {% for hit, subhit_list in results.items %}
                 {% if hit %}
                     <li><a href="{{ hit.get_absolute_link }}">{{ hit.text|highlight:terms|safe }}</a></li>
-                    {% if subhit_list %}
-                        <ul>
-                            {% for subhit in subhit_list %}
-                                <li>&rsaquo; <a href="{{ subhit.get_absolute_link }}">{{ subhit.text|highlight:terms|safe }}</a></li>
-                            {% endfor %}
-                        </ul>
+                    {% if subhit_list %}                        
+                        {% for subhit in subhit_list %}
+                            <li><a class="subhit_parent" href="{{ subhit.parent.get_absolute_link }}">{{ subhit.parent.text|safe }}</a> &rsaquo; <a href="{{ subhit.get_absolute_link }}">{{ subhit.text|highlight:terms|safe }}</a></li>
+                        {% endfor %}
                     {% endif %}
                 {% else %}
                     {# Results whose parents aren't in the result list #}

@@ -18,7 +18,7 @@
 {% block masthead %}
 <div class="container_12">
     <div class="grid_12" id="masthead_image">
-        <h1>Bluenote</h1>
+        <a href="{% url home %}" title="Yardbird"><h1>Bluenote</h1></a>
     </div>
 </div>
 {% endblock masthead %}
@@ -27,6 +27,11 @@
 {% endblock content %}
 
 {% block footer %}
+<div class="container_12">
+    <div class="grid_12 footer">
+        <p>bluenote is a quick'n'dirty <a href="http://pixane.com">pixane</a> contraption, powered by <a href="http://www.djangoproject.com">ponies</a>, <a href="http://zork.net/yardbird/" title="Yardbird">yardbird</a>, and a few hours' spare time..</p>
+    </div>
+</div>
 {% endblock footer %}
 {% endblock body %}
 </body>

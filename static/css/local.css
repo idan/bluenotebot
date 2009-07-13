@@ -59,3 +59,40 @@ span.highlight {
 	text-decoration: inherit;
 }
 
+.home {
+	text-align: center;
+}
+
+.home h2 {
+	font-weight: normal;
+	font-style: normal;
+}
+
+#search input {
+	font-size: 1.5em; 
+	line-height: 2em;
+}
+
+#search input#id_terms{
+	font-family: "Anonymous Pro", Inconsolata, Consolas, "DejaVu Sans Mono", "Liberation Mono", "Andale Mono", Courier, "Courier New", mono;
+	border: 1px solid #ccc;
+	padding: 3px;
+}
+
+#search input#submit {
+	padding: 2px;
+	margin-left: 1em;
+}
+
+.footer {
+	text-align: center;
+	margin-top: 3em;
+	border-top: 1px solid #eee;
+	padding-top: 1.5em;
+	color: #bbb;
+	font-style: italic;
+}
+
+.footer a {
+	color: #777;
+}
