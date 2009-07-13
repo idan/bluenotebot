@@ -20,5 +20,5 @@ def parse_docs():
             rank = 0
         
         d = DocEntry(parent=parent, text=contents, link=href, rank=rank)
-        print("{0}, {1}: {2}".format(parent, contents, href))
+        print("%s, %s: %s" % (parent, contents, href))
         d.save()

@@ -7,7 +7,7 @@ register = template.Library()
 @register.filter
 def highlight(text, terms):
     for term in terms:
-        patt = re.compile('(?P<term>{0})'.format(term), re.I)
+        patt = re.compile('(?P<term>%s)'% (term), re.I)
         text = patt.sub('<span class="highlight">\g<term></span>', text)
     return mark_safe(text)
 
