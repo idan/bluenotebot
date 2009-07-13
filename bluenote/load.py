@@ -9,6 +9,7 @@ def parse_docs():
     links = soup.findAll('a', {'class': 'reference external'})
     for link in links:
         href = link.attrMap['href']
+        href = href.replace('.html', '')
         contents = strip_tags(link.contents[0])
         # split and look for parent
         parts = href.split('#', 2)
@@ -19,6 +20,6 @@ def parse_docs():
             parent = None
             rank = 0
         
-        d = DocEntry(parent=parent, text=contents, link=href, rank=rank)
+        d , created = DocEntry.objects.get_or_create(parent=parent, text=contents, link=href, rank=rank)
         print("%s, %s: %s" % (parent, contents, href))
         d.save()
