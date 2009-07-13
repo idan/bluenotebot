@@ -5,12 +5,22 @@ from django.utils.safestring import mark_safe
 from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
 from bluenote.models import DocEntry
+import re
+
+user_start = re.compile('^(\w+):')
+user_at = re.compile('\s@(\w+)(?=[:;,.\s]|$)')
 
 def documentation(request, terms):
     results = DocEntry.objects.search(terms.split(','))
     if not results:
         return render_silence()
         
+    target_users = []
+    start_match = user_start.search(request.message)
+    if start_match:
+        target_users.append(start_match.group(1))
+    else:
+        target_users.extend(user_at.findall(request.message))
     
     responses = []
     for result in results:
@@ -27,14 +37,17 @@ def documentation(request, terms):
         responses.append("There are %s more results for '%s', see %s for the full list." % (
             len(results)-limit, terms, url))
     
+    response = '\n'.join(responses)
     if request.addressed:
         target = request.reply_recipient
     else:
         target = request.channel
-        
+        if target_users:
+            response = ', '.join(target_users) + ': ' + response
+    
     return IRCResponse(
         target, 
-        mark_safe('\n'.join(responses)),
+        mark_safe(response),
         'PRIVMSG')
 
 def help(request):
