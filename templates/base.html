@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>{% block title %}Bluenote - The #Django IRC documentation bot{% endblock title %}</title>
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/reset.css" type="text/css" media="all" charset="utf-8">
+	<link rel="stylesheet" href="{{ MEDIA_URL }}css/960.css" type="text/css" media="all" charset="utf-8">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/text.css" type="text/css" media="all" charset="utf-8">
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/local.css" type="text/css" media="all" charset="utf-8">
+    
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+<body>
+{% block body %}
+{% block masthead %}
+<div class="container_12">
+    <div class="grid_12" id="masthead_image">
+        <h1>Bluenote</h1>
+    </div>
+</div>
+{% endblock masthead %}
+
+{% block content %}
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}
+{% endblock body %}
+</body>
+</html>

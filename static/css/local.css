@@ -1,0 +1,61 @@
+#masthead_image h1 {
+	text-indent: -99999px;
+	line-height: 300px;
+	margin: 0px;
+	margin-top: 20px;
+	padding: 0px;
+	width: 100%;
+	background: url(../img/djangopony.png) no-repeat center top;
+}
+
+h2 {
+	font-size: 1.5em; 
+	line-height: 2em;
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+	color: #b3c2c5;
+	font-style: italic;
+	font-weight: normal;
+}
+
+ul {
+	list-style-type: none;
+}
+
+ul ul {
+	margin-bottom: 0;
+	margin-left: 3em;
+}
+
+li {
+	font-size: 1.25em;
+	line-height: 1.2em; 
+	margin-bottom: 1.2em;
+}
+
+ul>li {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+a {
+	color: #3d6f92;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a.subhit_parent {
+	font-size: 0.8em;
+	font-variant: small-caps;
+	color: #b3c2c5;
+}
+
+span.highlight {
+	background-color: #eee;
+	
+	text-decoration: inherit;
+}
+

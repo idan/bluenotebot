@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load searchfilters %}
+
+{% block content %}
+<div class="container_12">
+    <div class="grid_12">
+        {% if results %}
+            <h2>Found {{ count }} documentation items matching "{{ terms|join:', ' }}"</h2>
+        {% else %}
+            <h2>No results found.</h2>
+        {% endif %}
+        
+        <ul>
+            {% for hit, subhit_list in results.items %}
+                {% if hit %}
+                    <li><a href="{{ hit.get_absolute_link }}">{{ hit.text|highlight:terms|safe }}</a></li>
+                    {% if subhit_list %}
+                        <ul>
+                            {% for subhit in subhit_list %}
+                                <li>&rsaquo; <a href="{{ subhit.get_absolute_link }}">{{ subhit.text|highlight:terms|safe }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% else %}
+                    {# Results whose parents aren't in the result list #}
+                    {% for hit in subhit_list %}
+                        <li><a class="subhit_parent" href="{{ hit.parent.get_absolute_link }}">{{ hit.parent.text|safe }}</a> &rsaquo; <a href="{{ hit.get_absolute_link }}">{{ hit.text|highlight:terms|safe }}</a></li>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}
