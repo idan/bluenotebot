@@ -34,5 +34,25 @@ def documentation(request, terms):
         
     return IRCResponse(
         target, 
-        '\n'.join(responses),
+        mark_safe('\n'.join(responses)),
         'PRIVMSG')
+
+def help(request):
+    if request.addressed:
+        target = request.reply_recipient
+    else:
+        target = request.channel
+    
+    return IRCResponse(
+    target,
+    "I'm a bot which finds entries in the django docs. Try writing '??serve'. For multiple terms, try '??admin,customizing'",
+    'PRIVMSG')
+
+def private_help(request):
+    if not request.addressed:
+        return render_silence()
+    
+    return IRCResponse(
+    request.reply_recipient,
+    "I'm a bot which finds entries in the django docs. Try writing '??serve'. For multiple terms, try '??admin,customizing'",
+    'PRIVMSG')
