@@ -7,7 +7,7 @@ from django.contrib.sites.models import Site
 from bluenote.models import DocEntry
 import re
 
-user_start = re.compile('^(\w+):')
+user_start = re.compile('^(\w+)[:,;]')
 user_at = re.compile('\s@(\w+)(?=[:;,.\s]|$)')
 
 def documentation(request, terms):
