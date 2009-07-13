@@ -24,8 +24,8 @@ def documentation(request, terms):
             current_site.domain,
             reverse('search', kwargs={'terms':terms}))
         responses = responses[:limit]
-        responses.append("There are %s results for '%s', see %s for the full list." % (
-            len(results), terms, url))
+        responses.append("There are %s more results for '%s', see %s for the full list." % (
+            len(results)-limit, terms, url))
     
     if request.addressed:
         target = request.reply_recipient
