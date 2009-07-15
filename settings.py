@@ -83,8 +83,6 @@ INSTALLED_APPS = (
 
 ROOT_MSGCONF = 'bluenote'
 
-DJANGO_DOCS_URL = 'http://docs.djangoproject.com/en/dev/'
-
 # Load local_settings.py
 try:
      from local_settings import *

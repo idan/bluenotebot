@@ -25,7 +25,7 @@ def documentation(request, terms):
     responses = []
     for result in results:
         responses.append("%s: %s" % (
-            mark_safe(result.text), settings.DJANGO_DOCS_URL + result.link))
+            mark_safe(result.text), result.link))
     
     limit = 7 if request.addressed else 2    
     if len(responses) > limit:

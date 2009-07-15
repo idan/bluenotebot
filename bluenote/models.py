@@ -17,6 +17,3 @@ class DocEntry(models.Model):
     def __unicode__(self):
         return self.text
     
-    def get_absolute_link(self):
-        return settings.DJANGO_DOCS_URL + self.link
-    
